@@ -12,7 +12,7 @@ Dir.foreach('./bestiary/_posts/') do |path|
   file = File.open(path, 'r')
   file.each_line do |line|
     if line.include? "Armor Class"
-      puts line
+      puts line[/([0-9]{1,2})/, 1]
     end
   end
   file.close
