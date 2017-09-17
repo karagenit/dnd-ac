@@ -41,4 +41,5 @@ puts "Counted: " + count.to_s
 puts "Maximum: " + max.to_s
 puts "Minimum: " + min.to_s
 puts "Mean: " + mean.to_s
+IO.write('data.txt', acs.to_s)
 graphArray(acs)
