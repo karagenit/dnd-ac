@@ -11,6 +11,7 @@ max = 15
 total = 0
 count = 0
 acs = Array.new(30, 0)
+raw = Array.new
 
 Dir.foreach('./bestiary/_posts/') do |path|
   next if path == '.' or path == '..'
@@ -24,6 +25,7 @@ Dir.foreach('./bestiary/_posts/') do |path|
       total += ac
       count += 1
       acs[ac] += 1
+      raw.push ac
       if ac < min
         min = ac
       end
@@ -41,5 +43,6 @@ puts "Counted: " + count.to_s
 puts "Maximum: " + max.to_s
 puts "Minimum: " + min.to_s
 puts "Mean: " + mean.to_s
-IO.write('data.txt', acs.to_s)
+IO.write('ac_counts.txt', acs.to_s)
+IO.write('ac_raw.txt', raw.to_s)
 graphArray(acs)
